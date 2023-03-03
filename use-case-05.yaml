@@ -1,0 +1,18 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: prod-naming-convention
+spec:
+  validationFailureAction: enforce
+  background: true
+  rules:
+  - name: pod-prod-naming
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Pods must have a 'prod-' prefix in their name"
+      pattern:
+        metadata:
+          name: "prod-*"

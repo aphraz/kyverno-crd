@@ -1,0 +1,22 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-tolerations
+spec:
+  validationFailureAction: enforce
+  background: true
+  rules:
+  - name: pod-tolerations
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Pods must tolerate the 'app=backend' taint"
+      pattern:
+        spec:
+          tolerations:
+          - key: "app"
+            operator: "Equal"
+            value: "backend"
+            effect: "NoSchedule"

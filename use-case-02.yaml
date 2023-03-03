@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-backend-label
+spec:
+  validationFailureAction: enforce
+  background: true
+  rules:
+  - name: pod-backend-label
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Pods must have a 'team' label with value 'backend'"
+      pattern:
+        metadata:
+          labels:
+            team: backend

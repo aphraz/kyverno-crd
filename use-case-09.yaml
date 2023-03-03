@@ -1,0 +1,23 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-resource-limits
+spec:
+  validationFailureAction: enforce
+  background: true
+  rules:
+  - name: pod-resource-limits
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Pods must have a CPU limit of 1 and a memory limit of 512 MiB"
+      pattern:
+        spec:
+          containers:
+          - name: "*"
+            resources:
+              limits:
+                cpu: 1
+                memory: 512Mi

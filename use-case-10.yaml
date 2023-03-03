@@ -1,0 +1,18 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-always-restart-policy
+spec:
+  validationFailureAction: enforce
+  background: true
+  rules:
+  - name: pod-restart-policy
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Pods must have a restart policy of Always"
+      pattern:
+        spec:
+          restartPolicy: Always

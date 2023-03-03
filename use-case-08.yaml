@@ -1,0 +1,26 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-backend-node-affinity
+spec:
+  validationFailureAction: enforce
+  background: true
+  rules:
+  - name: pod-backend-node-affinity
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Pods must be scheduled on nodes with the 'backend' label"
+      pattern:
+        spec:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                  - key: role
+                    operator: In
+                    values:
+                    - backend

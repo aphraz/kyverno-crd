@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-backend-description-annotation
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+  - name: pod-backend-description-annotation
+    match:
+      resources:
+        kinds:
+        - Pod
+    validate:
+      message: "Pods must have a 'description' annotation with value 'backend'"
+      pattern:
+        metadata:
+          annotations:
+            description: backend
