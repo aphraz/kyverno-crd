@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   name: require-backend-node-affinity
 spec:
-  validationFailureAction: enforce
+  validationFailureAction: Enforce
   background: true
   rules:
   - name: pod-backend-node-affinity

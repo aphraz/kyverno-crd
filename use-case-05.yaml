@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   name: prod-naming-convention
 spec:
-  validationFailureAction: enforce
+  validationFailureAction: Enforce
   background: true
   rules:
   - name: pod-prod-naming

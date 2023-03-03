@@ -1,7 +1,7 @@
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: enforce-resource-limits
+  name: Enforce-resource-limits
 spec:
   validationFailureAction: Enforce
   background: true

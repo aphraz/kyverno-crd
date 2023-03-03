@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   name: require-namespace-labels
 spec:
-  validationFailureAction: enforce
+  validationFailureAction: Enforce
   background: true
   rules:
   - name: namespace-labels

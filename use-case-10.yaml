@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   name: require-always-restart-policy
 spec:
-  validationFailureAction: enforce
+  validationFailureAction: Enforce
   background: true
   rules:
   - name: pod-restart-policy

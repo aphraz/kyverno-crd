@@ -3,7 +3,7 @@ kind: ClusterPolicy
 metadata:
   name: require-backend-label
 spec:
-  validationFailureAction: enforce
+  validationFailureAction: Enforce
   background: true
   rules:
   - name: pod-backend-label
