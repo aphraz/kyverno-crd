@@ -1,4 +1,4 @@
-# kyverno-crd
+# kyverno example use cases
 Manifests I created to practice some use-cases with Kyverno
 
 ### use-case-01 Enforcing Resource Limits
