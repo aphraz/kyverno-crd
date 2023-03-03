@@ -1,5 +1,5 @@
 # kyverno-crd
-Manifest I created to practice some use-cases with Kyverno
+Manifests I created to practice some use-cases with Kyverno
 
 ### use-case-01 Enforcing Resource Limits
 One of the most common use cases for creating custom policies is enforcing resource limits. Resource limits ensure that Kubernetes pods do not consume too much CPU or memory, which can cause performance issues or even bring down the entire cluster.
